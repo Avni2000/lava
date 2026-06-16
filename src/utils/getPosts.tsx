@@ -1,16 +1,21 @@
-const modules = import.meta.glob('../content/*.md', { query: '?raw', import: 'default' });
+const modules = import.meta.glob(`../../public/content/*.md`, {
+	query: "?raw",
+	import: "default",
+});
 
 export type Post = {
-    filename: string ;
-    content: string ;
-    filepath: string ;
+	title: string;
+	content: string;
+	filepath: string;
+};
+export async function getMarkdownFiles(): Promise<Post[]> {
+	{
+		const posts: Post[] = [];
+		for (const filepath in modules) {
+			const content = (await modules[filepath]()) as string;
+			const title = filepath.split("/").pop()?.split(".")?.[0] as string;
+			posts.push({ title, content, filepath });
+		}
+		return posts;
+	}
 }
-export async function getMarkdownFiles() : Promise<Post[]> { {
-  const posts: Post[] = [];
-  for (const filepath in modules) {
-    const content = await modules[filepath]() as string;
-    const filename = filepath.split('/').pop() as string; 
-    posts.push({ filename, content, filepath });
-  }
-  return posts;
-}}

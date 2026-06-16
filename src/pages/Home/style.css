@@ -13,17 +13,9 @@ img:hover {
 	column-gap: 1.5rem;
 }
 
-
-.resource:hover {
-	border: 1px solid #000;
-	box-shadow: 0 25px 50px -12px #673ab888;
-}
-
 .home {
 	position: relative;
 }
-.content{
+.content {
 	row-gap: 1.5rem;
-
 }
-

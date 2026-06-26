@@ -25,32 +25,35 @@ export function Home() {
 			<div>
 				<h2>about</h2>
 			</div>
-			<div
-				style={{
-					display: "flex",
-					flexDirection: "row",
-					alignItems: "center",
-				}}
-			>
+			<div>
 				<h2>blog</h2>
 			</div>
 			<Container>
 				<Row>
-					<div class="posts">
+					<div>
 						{posts?.map((post) => (
 							<Card
 								key={post.title}
 								onClick={() => openPage(post)}
 								style={{
-									className: "card",
 									cursor: "pointer",
 								}}
 							>
-								<Card.Body>
-									<Card.Title>{post.title}</Card.Title>
-									<p style={{ fontSize: "15px" }}>
-										05/05/2025
-									</p>
+								<Card.Body
+									style={{
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										justifyContent: "space-between",
+									}}
+									className="post"
+								>
+									<Card.Title style={{ fontWeight: 600 }}>
+										{post.title}
+									</Card.Title>
+									<Card.Text style={{ fontStyle: "italic" }}>
+										{post.date}
+									</Card.Text>
 								</Card.Body>
 							</Card>
 						))}

@@ -8,14 +8,27 @@ img:hover {
 
 .home section {
 	margin-top: 5rem;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	column-gap: 1.5rem;
+	display: flex;
+	flex-wrap: wrap;
 }
 
-.home {
-	position: relative;
+.home-path {
+	margin: 0;
+	font-size: 1rem;
+	opacity: 0.7;
+}
+.card {
+	/* Add shadows to create the "card" effect */
+	border: 2px solid;
+	padding: 1rem;
 }
 .content {
 	row-gap: 1.5rem;
+}
+header {
+	text-align: left;
+	row-gap: 0px;
+}
+header h1 {
+	margin-bottom: 0;
 }

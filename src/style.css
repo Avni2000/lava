@@ -3,7 +3,7 @@
 	line-height: 1.5;
 	font-weight: 400;
 	color: #0f111d;
-	background-color: #fbf5ef; 
+	background-color: #fbf5ef;
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
@@ -20,12 +20,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
-}
-
-header {
-	display: flex;
-	justify-content: flex-end;
-	background-color: #013220;
 }
 
 header nav {
@@ -50,8 +44,6 @@ main {
 	flex: auto;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	max-width: 1280px;
-	margin: 0 auto;
-	text-align: center;
+	width: 45%;
+	margin: auto;
 }

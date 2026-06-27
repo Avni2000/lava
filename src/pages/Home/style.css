@@ -1,44 +1,58 @@
-img {
-	margin-bottom: 1.5rem;
+.home {
+	width: 100%;
 }
 
-img:hover {
-	filter: drop-shadow(0 0 2em #673ab8aa);
+.header {
+	margin-bottom: 2rem;
+	font-family: var(--font-serif);
 }
 
-.home section {
-	margin-top: 5rem;
-	display: flex;
-	flex-wrap: wrap;
+.header h1 {
+	margin: 0;
+	font-family: var(--font-serif);
+	font-size: 2.25rem;
+	font-weight: 700;
+	line-height: calc(2.5 / 2.25);
+	letter-spacing: -0.025em;
 }
 
 .home-path {
 	margin: 0;
-	font-size: 1rem;
-	opacity: 0.7;
+	font-size: 0.875rem;
+	line-height: calc(1.25 / 0.875);
+	color: var(--text-secondary);
 }
+
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+	font-family: var(--font-sans);
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+.content > div {
+	width: 100%;
+}
+
+h2 {
+	margin: 0 0 0.45rem;
+	font-family: var(--font-serif);
+	font-size: 1.875rem;
+	font-weight: 700;
+	line-height: 1.2;
+	letter-spacing: -0.015em;
+}
+
 .post {
-	/* Add shadows to create the "card" effect */
 	border: 2px solid;
 	padding: 1rem;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	font-size: 1rem;
+	line-height: 1.5;
 }
+
 .post:hover {
 	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-.content {
-	row-gap: 1.5rem;
-	font-family: var(--font-sans);
-}
-header {
-	font-family: var(--font-serif);
-	text-align: left;
-	row-gap: 0px;
-}
-header h1 {
-	margin-bottom: 0;
-}
-h2 {
-	font-family: var(--font-serif);
-	font-weight: "900";
 }

@@ -1,22 +1,53 @@
-:root {
-	line-height: 1.5;
-	word-spacing: var(--spacing);
-	font-weight: 400;
-	color: #363535;
-	background-color: #fbf5ef;
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;600;700&display=swap");
 
+:root {
+	--font-sans: "Inter", system-ui, sans-serif;
+	--font-serif: "Fraunces", Georgia, serif;
+	--font-mono: "IBM Plex Mono", Menlo, monospace;
+	--color-primary-light: #363535;
+	--color-secondary-light: #999894;
+	--color-background-light: #fbf5ef;
+	--color-surface-light: #f0e7da;
+	--color-accent-light: #e48c00;
+	--text-secondary: var(--color-secondary-light);
+
+	font-family: var(--font-sans);
+	line-height: 1.5;
+	font-weight: 400;
+	color: var(--color-primary-light);
+	background-color: var(--color-background-light);
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-text-size-adjust: 100%;
-	--font-sans: "Inter", system-ui, sans-serif;
-	--font-serif: "Fraunces", Georgia, serif;
-	--font-mono: "IBM Plex Mono", Menlo, monospace;
+}
+
+*,
+::before,
+::after {
+	box-sizing: border-box;
+	border: 0 solid;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-family: var(--font-sans);
+	line-height: 1.5;
+	tab-size: 4;
+	-webkit-text-size-adjust: 100%;
 }
 
 body {
 	margin: 0;
+	overflow-x: hidden;
+	font-family: var(--font-sans);
+	color: var(--color-primary-light);
+	background-color: var(--color-background-light);
+	transition:
+		color 0.2s,
+		background-color 0.2s;
 }
 
 #app {
@@ -29,9 +60,38 @@ main {
 	flex: auto;
 	display: flex;
 	flex-direction: column;
-	width: 45%;
-	margin: auto;
+	width: min(calc(100% - 2rem), 45rem);
+	margin: 2rem auto 0;
 }
+
 a {
-	color: sienna;
+	color: var(--color-accent-light);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+p,
+ul,
+ol {
+	margin-bottom: 1rem;
+}
+
+ul,
+ol {
+	padding-left: 2rem;
+}
+
+li > ul,
+li > ol {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-left: 1.5rem;
+}
+
+hr {
+	margin: 1.5rem 0 1rem;
+	border-top: 1px solid var(--color-primary-light);
 }

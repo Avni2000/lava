@@ -1,7 +1,7 @@
 import "./style.css";
 import { useState, useEffect } from "preact/hooks";
 import { getAllPosts, Post } from "../../utils/getPost";
-import { Button, Card, Table, Container, Row, Col } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { MarkdownPage } from "../../components/MarkdownPage";
 import { getPost } from "../../utils/getPost";
 
@@ -31,7 +31,7 @@ export function Home() {
 		});
 	}, []);
 	return (
-		<div style={{ padding: "10px" }}>
+		<div className="home">
 			<header className="header">
 				{/*TODO: make home and avni clickable (along with all other paths) */}
 				<h1>/home/avni/</h1>

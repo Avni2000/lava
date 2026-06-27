@@ -9,6 +9,7 @@ export function Home() {
 	const [posts, setPosts] = useState<Post[] | null>([]);
 	const [about, setAbout] = useState<Post | null>(null);
 	const [links, setLinks] = useState<Post | null>(null);
+	const [footer, setFooter] = useState<Post | null>(null);
 
 	useEffect(() => {
 		getAllPosts()
@@ -22,71 +23,77 @@ export function Home() {
 		getPost("About.md").then((post) => {
 			setAbout(post);
 		});
-	}, []);
-	useEffect(() => {
 		getPost("Links.md").then((post) => {
 			setLinks(post);
 		});
+		getPost("Footer.md").then((post) => {
+			setFooter(post);
+		});
 	}, []);
 	return (
-		<>
+		<div style={{ padding: "10px" }}>
 			<header className="header">
+				{/*TODO: make home and avni clickable (along with all other paths) */}
 				<h1>/home/avni/</h1>
-				<p style={{ textAlign: "left" }} className="home-path">
-					~/
-				</p>
 			</header>
-			<div>
-				<h2>about</h2>
-				{about && <MarkdownPage content={about.content} />}
-			</div>
-			<div>
-				<h2>links</h2>
-				{links && <MarkdownPage content={links.content} />}
-			</div>
-			<div>
-				<h2>blog</h2>
-			</div>
-			<Container>
-				<Row>
+
+			<div className="content">
+				{/* About */}
+				<div>
+					<h2>about</h2>
 					<div>
-						{posts
-							?.filter(
-								(p) =>
-									p.title !== "About" && p.title !== "Links",
-							)
-							.map((post) => (
-								<Card
-									key={post.title}
-									onClick={() => openPage(post)}
-									style={{
-										cursor: "pointer",
-									}}
-								>
-									<Card.Body
-										style={{
-											display: "flex",
-											flexDirection: "row",
-											alignItems: "center",
-											justifyContent: "space-between",
-										}}
-										className="post"
-									>
-										<Card.Title style={{ fontWeight: 600 }}>
-											{post.title}
-										</Card.Title>
-										<Card.Text
-											style={{ fontStyle: "italic" }}
-										>
-											{post.date}
-										</Card.Text>
-									</Card.Body>
-								</Card>
-							))}
+						{about && <MarkdownPage content={about.content} />}
 					</div>
-				</Row>
-			</Container>
-		</>
+				</div>
+
+				{/* Links */}
+				<div>
+					<h2>links</h2>
+					{links && <MarkdownPage content={links.content} />}
+				</div>
+
+				{/*Blog */}
+				<div>
+					<h2>blog</h2>
+				</div>
+				<>
+					{posts
+						?.filter(
+							(p) =>
+								p.title !== "About" &&
+								p.title !== "Links" &&
+								p.title !== "Footer",
+						)
+						.map((post) => (
+							<Card
+								key={post.title}
+								onClick={() => openPage(post)}
+								style={{
+									cursor: "pointer",
+								}}
+							>
+								<Card.Body
+									style={{
+										display: "flex",
+										flexDirection: "row",
+										alignItems: "center",
+										justifyContent: "space-between",
+									}}
+									className="post"
+								>
+									<Card.Title style={{ fontWeight: 600 }}>
+										{post.title}
+									</Card.Title>
+									<Card.Text style={{ fontStyle: "italic" }}>
+										{post.date}
+									</Card.Text>
+								</Card.Body>
+							</Card>
+						))}
+				</>
+				<div>{footer && <MarkdownPage content={footer.content} />}</div>
+			</div>
+		</div>
 	);
 }
 function openPage(post: Post) {

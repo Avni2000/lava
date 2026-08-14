@@ -22,7 +22,9 @@ export default function WikiLink({
 			</HoverCard.Trigger>
 			{preview && (
 				<HoverCard.Content className="HoverCardContent">
-					<MarkdownPage content={preview} />
+					<div className="HoverCardPreview">
+						<MarkdownPage content={preview} />
+					</div>
 					<HoverCard.Arrow className="HoverCardArrow" />
 				</HoverCard.Content>
 			)}

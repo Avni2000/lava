@@ -95,3 +95,36 @@ hr {
 	margin: 1.5rem 0 1rem;
 	border-top: 1px solid var(--color-primary-light);
 }
+
+.markdown-page video {
+	width: 100%;
+	display: block;
+	margin: 1.5rem 0;
+}
+
+.markdown-page table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 1.5rem 0;
+}
+
+.markdown-page table th,
+.markdown-page table td {
+	border: 1px solid var(--color-primary-light);
+	padding: 0.75rem;
+	text-align: left;
+}
+
+.markdown-page table th {
+	background-color: var(--color-surface-light);
+	font-weight: 600;
+}
+
+.markdown-page img {
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin: 1.5rem 0;
+	border-radius: 4px;
+}

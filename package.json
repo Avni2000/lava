@@ -9,12 +9,16 @@
 	"dependencies": {
 		"@radix-ui/react-hover-card": "^1.1.17",
 		"front-matter": "^4.0.2",
+		"katex": "^0.18.4",
 		"preact": "^10.26.9",
 		"preact-iso": "^2.12.0",
 		"preact-render-to-string": "^6.7.0",
 		"react-bootstrap": "^2.10.10",
 		"react-markdown": "^10.1.0",
+		"rehype-katex": "^7.0.1",
 		"rehype-raw": "^7.0.0",
+		"remark-gfm": "^4.0.1",
+		"remark-math": "^6.0.0",
 		"remark-smartypants": "^3.0.2",
 		"slugify": "^1.6.9",
 		"tiny-invariant": "^1.3.3"

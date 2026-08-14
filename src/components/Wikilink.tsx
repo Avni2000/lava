@@ -21,11 +21,11 @@ export default function WikiLink({
 				</a>
 			</HoverCard.Trigger>
 			{preview && (
-				<HoverCard.Content className="HoverCardContent">
+				<HoverCard.Content className="HoverCardContent" sideOffset={8}>
 					<div className="HoverCardPreview">
 						<MarkdownPage content={preview} />
 					</div>
-					<HoverCard.Arrow className="HoverCardArrow" />
+					<HoverCard.Arrow className="HoverCardArrow" width={14} height={7} />
 				</HoverCard.Content>
 			)}
 		</HoverCard.Root>

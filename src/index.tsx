@@ -8,7 +8,7 @@ import {
 
 import { Home } from "./pages/Home/index";
 import { Post } from "./components/Post";
-import { NotFound } from "./pages/_404";
+import { NotFound } from "./utils/_404";
 import "./style.css";
 
 export function App() {

@@ -76,19 +76,21 @@ export function Home() {
 									<Card.Body
 										style={{
 											display: "flex",
-											flexDirection: "row",
-											alignItems: "center",
+											flexDirection: "column",
+											alignItems: "left",
 											justifyContent: "space-between",
 										}}
 										className="post"
-									>
+                    >
+
 										<Card.Title style={{ fontWeight: 600 }}>
 											{post.title}
 										</Card.Title>
-										<Card.Text
-											style={{ fontStyle: "italic" }}
-										>
-											{post.date}
+                      <Card.Text
+
+											style={{ margin: "5px 0 0 0", fontStyle: "italic" }}
+                      >
+                          {post.date}
 										</Card.Text>
 									</Card.Body>
 								</Card>

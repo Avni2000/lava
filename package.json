@@ -7,7 +7,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@floating-ui/react": "^0.27.19",
+		"@radix-ui/react-hover-card": "^1.1.17",
 		"front-matter": "^4.0.2",
 		"preact": "^10.26.9",
 		"preact-iso": "^2.12.0",
@@ -29,5 +29,8 @@
 	},
 	"eslintConfig": {
 		"extends": "preact"
+	},
+	"allowScripts": {
+		"esbuild@0.27.7": true
 	}
 }

@@ -1,6 +1,7 @@
 ---
 title: "About"
 date: 06-26-2025
+blogPost: false
 ---
 
 My name is Avni Badiwale, I'm a sophomore at UW-Madison studying Computer Science and Math.

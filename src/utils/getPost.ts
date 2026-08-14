@@ -13,6 +13,7 @@ export type Post = {
 	filepath: string;
 	date: string;
 	slug: string;
+	blogPost: boolean;
 };
 
 const slugMapping: Record<string, Post> = {};
@@ -59,6 +60,7 @@ export async function getPost(filepathOrSlug: string) {
 interface PostFrontmatter {
 	date?: string;
 	title?: string;
+	blogPost?: boolean;
 }
 
 /** @example
@@ -77,16 +79,15 @@ async function createSlugMappingForPosts() {
 		// We expect the content to be markdown, and data to be frontmatter (including date as a property)
 		const { attributes, body } = fm<PostFrontmatter>(str);
 		invariant(attributes?.date, "attributes.date is required");
-		const title =
-			attributes.title ||
-			filepath.split("/").pop()?.replace(".md", "") ||
-			"Untitled";
+		invariant(attributes?.title, "attributes.title is required");
+		const title = attributes.title;
 		slugMapping[slugify(title)] = {
 			title,
 			content: body,
 			filepath,
 			date: attributes.date,
 			slug: slugify(title),
+			blogPost: attributes.blogPost ?? true,
 		};
 		console.log(
 			"slug mapping:",

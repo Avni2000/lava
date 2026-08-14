@@ -17,7 +17,6 @@ export function Post() {
 			setLoading(false);
 			return;
 		}
-
 		(async () => {
 			try {
 				const fetchedPost = await getPost(slug);
@@ -32,11 +31,10 @@ export function Post() {
 				setLoading(false);
 			}
 		})();
-	}, []);
+	}, [slug]);
 
 	if (loading) return <div>Loading...</div>;
 	if (error) return <div>Error: {error}</div>;
 	if (!post) return null;
 	return <MarkdownPage content={post.content} />;
 }
-3;

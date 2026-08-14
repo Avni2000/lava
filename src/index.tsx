@@ -13,7 +13,7 @@ import "./style.css";
 
 export function App() {
 	return (
-		<LocationProvider>
+		<LocationProvider scope={/^\/(content\/.*)?$/}>
 			<main>
 				<Router>
 					<Route path="/" component={Home} />

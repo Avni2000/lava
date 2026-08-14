@@ -34,8 +34,8 @@ export function Home() {
 	return (
 		<div className="home">
 			<header className="header">
-				{/*TODO: make home and avni clickable (along with all other paths) */}
-				<h1>/home/avni/</h1>
+        <h1>/home/avni/ </h1>
+
 			</header>
 
 			<div className="content">

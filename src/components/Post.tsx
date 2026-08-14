@@ -41,7 +41,7 @@ export function Post() {
   return isBlogPost ? (
     <div>
       <header className="post-header">
-        <h1 className="post-title">{post.title}</h1>
+        <h1 className="post-title">{post.title} </h1>
         <p className="post-path">
           <a href="/">~</a>/content/{post.slug.toLocaleLowerCase()}
         </p>

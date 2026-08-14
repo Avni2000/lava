@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=IBM+Plex+Mono:wght@400&family=Inter:ital,wght@0,400;0,600;0,700;1,400&display=swap");
 
 :root {
 	--font-sans: "Inter", system-ui, sans-serif;
@@ -94,6 +94,27 @@ li > ol {
 hr {
 	margin: 1.5rem 0 1rem;
 	border-top: 1px solid var(--color-primary-light);
+}
+
+.post-header {
+	margin-bottom: 1.5rem;
+}
+
+.post-title {
+	margin: 0 0 0.375rem;
+	font-family: var(--font-serif);
+	font-size: 2.25rem;
+	font-weight: 700;
+	line-height: 1.2;
+	letter-spacing: -0.015em;
+	text-decoration: none;
+}
+
+.post-path {
+	margin: 0;
+	font-family: var(--font-mono);
+	font-size: 0.875rem;
+	color: var(--text-secondary);
 }
 
 .markdown-page video {

@@ -17,7 +17,8 @@ function opensInNewTab(href: unknown) {
 // Will be useful down the line.
 export function MarkdownPage({ content }: { content: string }) {
 	return (
-		<div className="markdown-page">
+    <div className="markdown-page">
+
 		<Markdown
 			skipHtml={false}
 			remarkPlugins={[remarkGfm, remarkMath, [remarkSmartypants, { dashes: "oldschool" }]]}

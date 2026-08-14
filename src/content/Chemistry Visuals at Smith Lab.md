@@ -3,8 +3,6 @@ title: Chemistry Visuals at Smith Lab
 date: 06-25-2026
 ---
 
-# Chemistry Visuals at Smith Lab
-
 I worked on a wide variety of stuff, but a few of my favorite mini-projects were creating [manim](https://www.manim.community/) visualizations of ways to embed [mass spectra](https://en.wikipedia.org/wiki/Mass_spectrometry) for use in Machine Learning models.
 
 You can find all of my work on the [lab's github repo](https://github.com/smith-chem-wisc/MS_Spectral_Encoding/)

@@ -5,7 +5,8 @@ import fm from "front-matter";
 const modules = import.meta.glob(`../content/*.md`, {
 	query: "?raw",
 	import: "default",
-});
+	eager: true,
+}) as Record<string, string>;
 
 export type Post = {
 	title: string;
@@ -16,83 +17,52 @@ export type Post = {
 	blogPost: boolean;
 };
 
-const slugMapping: Record<string, Post> = {};
-
-export async function getAllPosts(): Promise<Post[]> {
-	const posts: Post[] = [];
-	for (const filepath in modules) {
-		posts.push(await getPost(filepath));
-	}
-	return posts;
-}
-
-// Good Result:
-// filepath = "../content/A really deep title.md"
-// slug = "a-really-deep-title
-// title = A really deep title
-//
-/**
- * Retrieves post by filepath
- * @param filepathOrSlug The filepath of the post.
- * @returns The post object.
- */
-export async function getPost(filepathOrSlug: string) {
-	// is in cache?
-	const title = filepathOrSlug.split("/").pop()?.replace(".md", "") || "";
-
-	invariant(
-		!title.includes("content"),
-		"filepathOrSlug must not include 'content'",
-	);
-	if (slugMapping[slugify(title)]) {
-		return slugMapping[slugify(title)];
-	} else {
-		// not in cache, create mapping
-		await createSlugMappingForPosts();
-		// is in cache now?
-		if (slugMapping[slugify(title)]) {
-			return slugMapping[slugify(title)];
-		}
-	}
-	// still not in cache, throw error
-	throw new Error(`Post not found for slug: ${filepathOrSlug}`);
-}
 interface PostFrontmatter {
 	date?: string;
 	title?: string;
 	blogPost?: boolean;
 }
 
-/** @example
- * {
-   "title": "A really deep title",
-   "content": "# woah.",
-   "filepath": "../content/A really deep title.md",
-   "slug": "A-really-deep-title"
- }
+// Good Result:
+// filepath = "../content/A really deep title.md"
+// slug = "a-really-deep-title
+// title = A really deep title
+const allPosts: Post[] = Object.entries(modules).map(([filepath, raw]) => {
+	// We expect the content to be markdown, and data to be frontmatter (including date as a property)
+	const { attributes, body } = fm<PostFrontmatter>(raw);
+	invariant(attributes?.date, `attributes.date is required in ${filepath}`);
+	invariant(attributes?.title, `attributes.title is required in ${filepath}`);
+	const title = attributes.title;
+	return {
+		title,
+		content: body,
+		filepath,
+		date: attributes.date,
+		slug: slugify(title),
+		blogPost: attributes.blogPost ?? true,
+	};
+});
+
+const slugMapping: Record<string, Post> = Object.fromEntries(
+	allPosts.map((post) => [post.slug, post]),
+);
+
+export function getAllPosts(): Post[] {
+	return allPosts;
+}
+
+/**
+ * Retrieves post by filepath or slug.
+ * @param filepathOrSlug The filepath (e.g. "About.md") or slug of the post.
+ * @returns The post object.
  */
-async function createSlugMappingForPosts() {
-	// (re) populates cache by loading all posts from the content directory
-	for (const filepath in modules) {
-		console.log("mapping:", filepath, slugify(filepath));
-		const str = (await modules[filepath]()) as string;
-		// We expect the content to be markdown, and data to be frontmatter (including date as a property)
-		const { attributes, body } = fm<PostFrontmatter>(str);
-		invariant(attributes?.date, "attributes.date is required");
-		invariant(attributes?.title, "attributes.title is required");
-		const title = attributes.title;
-		slugMapping[slugify(title)] = {
-			title,
-			content: body,
-			filepath,
-			date: attributes.date,
-			slug: slugify(title),
-			blogPost: attributes.blogPost ?? true,
-		};
-		console.log(
-			"slug mapping:",
-			slugify(title),
-			slugMapping[slugify(title)],
-		);
-	}
+export function getPost(filepathOrSlug: string): Post {
+	const title = filepathOrSlug.split("/").pop()?.replace(".md", "") || "";
+	invariant(
+		!title.includes("content"),
+		"filepathOrSlug must not include 'content'",
+	);
+	const post = slugMapping[slugify(title)];
+	invariant(post, `Post not found for slug: ${filepathOrSlug}`);
+	return post;
 }

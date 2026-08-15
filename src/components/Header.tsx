@@ -1,17 +1,17 @@
-import { useLocation } from 'preact-iso';
+import { Link, useLocation } from "wouter-preact";
 
 export function Header() {
-	const { url } = useLocation();
+	const [path] = useLocation();
 
 	return (
 		<header>
 			<nav>
-				<a href="/" class={url == '/' ? 'active' : undefined}>
+				<Link href="/" class={path == "/" ? "active" : undefined}>
 					Home
-				</a>
-				<a href="/404" class={url == '/404' ? 'active' : undefined}>
+				</Link>
+				<Link href="/404" class={path == "/404" ? "active" : undefined}>
 					404
-				</a>
+				</Link>
 			</nav>
 		</header>
 	);

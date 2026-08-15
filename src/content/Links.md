@@ -5,5 +5,5 @@ blogPost: false
 ---
 
 - [LinkedIn](https://www.linkedin.com/in/avni-badiwale)
-- [Resume](/Avni-Badiwale.pdf)
+- [Resume](Avni-Badiwale.pdf)
 - [Github](https://github.com/Avni2000)

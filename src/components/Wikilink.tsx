@@ -1,5 +1,6 @@
 import * as HoverCard from "@radix-ui/react-hover-card";
 import { ComponentChildren } from "preact";
+import { Link } from "wouter-preact";
 import { MarkdownPage } from "./MarkdownPage";
 import "./styles.css";
 export default function WikiLink({
@@ -16,9 +17,9 @@ export default function WikiLink({
 	return (
 		<HoverCard.Root>
 			<HoverCard.Trigger asChild>
-				<a href={link} className={className}>
+				<Link href={link} className={className}>
 					{children}
-				</a>
+				</Link>
 			</HoverCard.Trigger>
 			{preview && (
 				<HoverCard.Content className="HoverCardContent" sideOffset={8}>

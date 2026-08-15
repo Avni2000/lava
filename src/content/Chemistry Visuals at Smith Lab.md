@@ -9,7 +9,7 @@ You can find all of my work on the [lab's github repo](https://github.com/smith-
 
 To put it simply, how do we go from:
 
-<img src="/ms2-spectrum-ex.png" alt="Mass Spectrum Example" />
+<img src="ms2-spectrum-ex.png" alt="Mass Spectrum Example" />
 
 
 to a list of numbers? The spectrum above is human readable, but the machine learning model still needs a numerical representation.
@@ -29,7 +29,7 @@ Then, we're interested in figuring out ways to quickly search a massive database
 
 It is kind of like sorting legos. We do some preprocessing to make it easier to build the lego later.
 
-![Lego Clustering](/lego-clustering.png)
+![Lego Clustering](lego-clustering.png)
 
 We take all the labeled spectra in our database and sort them into groups of similar ones. 
 
@@ -37,8 +37,8 @@ Once that's done, whenever a new, unidentified spectrum comes in, we just check 
 
 But in order to cluster spectra, we need some way to compare them. This is typically done via a binning strategy. One strategy is to bin the mass spectrum into a fixed number of bins, with each bin representing a different mass range. 
 
-<video controls poster="/Screenshot from Binning.mp4.png">
-  <source src="/binning.mp4" type="video/mp4">
+<video controls poster="Screenshot from Binning.mp4.png">
+  <source src="binning.mp4" type="video/mp4">
 </video>
 
 Where our resulting vector for each spectrum is dense with a bunch of zeros.
@@ -55,8 +55,8 @@ This allows us to represent each spectrum as a sparse vector, with only a few no
 
 Here's what that looks like, with a toy representation of a hashed vs. unhashed binned vector:
 
-<video controls poster="/Screenshot from hashing-preservation-complete.mp4.png">
-  <source src="/hashing-preservation-complete.mp4" type="video/mp4">
+<video controls poster="Screenshot from hashing-preservation-complete.mp4.png">
+  <source src="hashing-preservation-complete.mp4" type="video/mp4">
 </video>
 
 
@@ -68,7 +68,7 @@ Here's what that looks like, with a toy representation of a hashed vs. unhashed 
 
 The field of proteomics largely takes from traditional NLP concepts here. Specifically, the [sinusoidal encoding](https://en.wikipedia.org/wiki/Transformer_(deep_learning)#Positional_encoding) is used to represent the mass spectrum as a sequence of numbers.
 
-![Sinusoidal Encoding in the context of the transformer architecture](/sinusoidal-pe-transformers.png)
+![Sinusoidal Encoding in the context of the transformer architecture](sinusoidal-pe-transformers.png)
 
 
 The idea here is that we need some way to represent peaks in our data with regard to their position. **That is, "The dog bites the man" is different from "The man bites the dog"**. Somehow, we'd like to encode each word with its position in the sequence.
@@ -123,8 +123,8 @@ That's exactly what **sinusoidal positional encoding** does.
 We can essentially use a somewhat arbitrary formula to draw sine waves through our peak a number of times, and use the resulting waveform as a representation of the peak's position.
 - Short wavelengths detect tiny $m/z$ position changes (eg. between $600$ and $601$), while long wavelengths detect larger changes (eg. between $600$ and $700$s).
 
-<video controls poster="/Screenshot from sinusoidal-pe.mp4.png">
-  <source src="/sinusoidal-pe.mp4" type="video/mp4">
+<video controls poster="Screenshot from sinusoidal-pe.mp4.png">
+  <source src="sinusoidal-pe.mp4" type="video/mp4">
 </video>
 
 We can run this algorithm for every peak, and use the set of resulting waveforms to represent the distribution of peaks in our dataset, allowing us to analyze the data using traditional machine learning techniques.

@@ -1,38 +1,26 @@
-import {
-	LocationProvider,
-	Router,
-	Route,
-	hydrate,
-	prerender as ssr,
-} from "preact-iso";
+import { render } from "preact";
+import { Router, Switch, Route } from "wouter-preact";
 
 import { Home } from "./pages/Home/index";
 import { Post } from "./components/Post";
 import { NotFound } from "./utils/_404";
+import { ROUTER_BASE } from "./utils/url";
 import "./style.css";
 
 export function App() {
 	return (
-		<LocationProvider scope={/^\/(content\/.*)?$/}>
+		<Router base={ROUTER_BASE}>
 			<main>
-				<Router>
+				<Switch>
 					<Route path="/" component={Home} />
 					<Route path="/content/:slug" component={Post} />
-					<Route default component={NotFound} />
-				</Router>
+					<Route component={NotFound} />
+				</Switch>
 			</main>
-		</LocationProvider>
+		</Router>
 	);
 }
 
 if (typeof window !== "undefined") {
-	hydrate(<App />, document.getElementById("app") as HTMLElement);
-}
-
-/**
- * This is for Static Site Generation (SSG) -- it allows the site to load with HTML without waiting for JS to load.
- * @param data Data passed from the build tool (e.g., current URL)
- */
-export async function prerender(data: any) {
-	return await ssr(<App {...data} />);
+	render(<App />, document.getElementById("app") as HTMLElement);
 }

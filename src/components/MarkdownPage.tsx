@@ -5,10 +5,7 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
-
-// Matches the LocationProvider `scope` in src/index.tsx: only these paths are
-// handled by client-side routing, so only these should stay in the same tab.
-const inAppRoute = /^\/(content\/.*)?$/;
+import { inAppRoute } from "../utils/url";
 
 function opensInNewTab(href: unknown) {
 	return typeof href === "string" && !inAppRoute.test(href);

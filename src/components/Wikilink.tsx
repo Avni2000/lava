@@ -1,6 +1,7 @@
 import * as HoverCard from "@radix-ui/react-hover-card";
 import { ComponentChildren } from "preact";
-import { Link } from "wouter-preact";
+import { JSX } from "preact";
+import { useLocation, useRouter } from "wouter-preact";
 import { MarkdownPage } from "./MarkdownPage";
 import "./styles.css";
 export default function WikiLink({
@@ -14,12 +15,24 @@ export default function WikiLink({
 	preview?: string;
 	className?: string;
 }) {
+	const router = useRouter();
+	const [, navigate] = useLocation();
+
+	// wouter-preact's <Link> doesn't forward refs (its `forwardRef` is a
+	// no-op stub), which breaks Radix's `asChild` trigger positioning. Drive
+	// navigation off a plain <a> instead so the ref reaches Radix intact.
+	const onClick = (event: JSX.TargetedMouseEvent<HTMLAnchorElement>) => {
+		if (event.ctrlKey || event.metaKey || event.altKey || event.shiftKey || event.button !== 0) return;
+		event.preventDefault();
+		navigate(link);
+	};
+
 	return (
 		<HoverCard.Root>
 			<HoverCard.Trigger asChild>
-				<Link href={link} className={className}>
+				<a href={router.base + link} onClick={onClick} className={className}>
 					{children}
-				</Link>
+				</a>
 			</HoverCard.Trigger>
 			{preview && (
 				<HoverCard.Content className="HoverCardContent" sideOffset={8}>

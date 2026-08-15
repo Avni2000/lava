@@ -28,7 +28,7 @@ export default function WikiLink({
 	};
 
 	return (
-		<HoverCard.Root>
+		<HoverCard.Root openDelay={100}>
 			<HoverCard.Trigger asChild>
 				<a href={router.base + link} onClick={onClick} className={className}>
 					{children}

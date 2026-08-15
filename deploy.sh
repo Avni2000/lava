@@ -13,5 +13,5 @@ git commit -m "Deploying updated site: $(git diff --cached --name-only | tr '\n'
 echo "Starting deployment to server..."
 rsync -avz --delete --progress \
   dist/ \
-    avni-CS:~/public/html/
+    avni@best-linux.cs.wisc.edu:~/public/html/
 echo "Deployment completed successfully."

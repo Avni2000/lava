@@ -13,7 +13,7 @@ export function Home() {
 	return (
 		<div className="home">
 			<header className="header">
-        <h1>/home/avni/ </h1>
+				<h1>/home/avni/ </h1>
 
 			</header>
 
@@ -39,8 +39,9 @@ export function Home() {
 				<>
 					{posts
 						.filter((p) => p.blogPost)
-            .map((post) => (
-              <div>
+						.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+						.map((post) => (
+							<div>
 								<WikiLink
 									key={post.title}
 									link={`/content/${post.slug}`}
@@ -60,21 +61,21 @@ export function Home() {
 												justifyContent: "space-between",
 											}}
 											className="post"
-                    >
+										>
 
 											<Card.Title style={{ fontWeight: 600 }}>
 												{post.title}
 											</Card.Title>
-                      <Card.Text
+											<Card.Text
 
 												style={{ margin: "5px 0 0 0", fontStyle: "italic" }}
-                      >
-                          {post.date}
+											>
+												{post.date}
 											</Card.Text>
 										</Card.Body>
 									</Card>
 								</WikiLink>
-              </div>
+							</div>
 						))}
 				</>
 				<div>

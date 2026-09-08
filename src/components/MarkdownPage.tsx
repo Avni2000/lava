@@ -4,7 +4,9 @@ import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeKatex from "rehype-katex";
+import rehypeHighlight from "rehype-highlight";
 import "katex/dist/katex.min.css";
+import "highlight.js/styles/github.css";
 import { inAppRoute } from "../utils/url";
 
 function opensInNewTab(href: unknown) {
@@ -19,7 +21,7 @@ export function MarkdownPage({ content }: { content: string }) {
 		<Markdown
 			skipHtml={false}
 			remarkPlugins={[remarkGfm, remarkMath, [remarkSmartypants, { dashes: "oldschool" }]]}
-			rehypePlugins={[rehypeRaw, rehypeKatex]}
+			rehypePlugins={[rehypeRaw, rehypeKatex, rehypeHighlight]}
 			components={{
 				a: ({ href, children, ...props }) =>
 					opensInNewTab(href) ? (

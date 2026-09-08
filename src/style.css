@@ -10,7 +10,7 @@
 	--color-surface-light: #f0e7da;
 	--color-accent-light: #e48c00;
 	--text-secondary: var(--color-secondary-light);
-
+	font-size: 14px;
 	font-family: var(--font-sans);
 	line-height: 1.5;
 	font-weight: 400;
@@ -60,7 +60,7 @@ main {
 	flex: auto;
 	display: flex;
 	flex-direction: column;
-	width: min(calc(100% - 2rem), 40rem);
+	width: min(calc(100% - 4rem), 50rem);
 	margin: 2rem auto 0;
 }
 
@@ -84,8 +84,8 @@ ol {
 	padding-left: 2rem;
 }
 
-li > ul,
-li > ol {
+li>ul,
+li>ol {
 	margin-top: 0;
 	margin-bottom: 0;
 	padding-left: 1.5rem;

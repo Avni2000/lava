@@ -16,26 +16,26 @@ function opensInNewTab(href: unknown) {
 // Will be useful down the line.
 export function MarkdownPage({ content }: { content: string }) {
 	return (
-    <div className="markdown-page">
+		<div className="markdown-page">
 
-		<Markdown
-			skipHtml={false}
-			remarkPlugins={[remarkGfm, remarkMath, [remarkSmartypants, { dashes: "oldschool" }]]}
-			rehypePlugins={[rehypeRaw, rehypeKatex, rehypeHighlight]}
-			components={{
-				a: ({ href, children, ...props }) =>
-					opensInNewTab(href) ? (
-						<a href={href} target="_blank" rel="noopener noreferrer" {...props}>
-							{children}
-						</a>
-					) : (
-						<a href={href} {...props}>
-							{children}
-						</a>
-					),
-			}}
-      >
-        {content}
+			<Markdown
+				skipHtml={false}
+				remarkPlugins={[remarkGfm, remarkMath, [remarkSmartypants, { dashes: "oldschool" }]]}
+				rehypePlugins={[rehypeRaw, rehypeKatex, rehypeHighlight]}
+				components={{
+					a: ({ href, children, ...props }) =>
+						opensInNewTab(href) ? (
+							<a href={href} target="_blank" rel="noopener noreferrer" {...props}>
+								{children}
+							</a>
+						) : (
+							<a href={href} {...props}>
+								{children}
+							</a>
+						),
+				}}
+			>
+				{content}
 			</Markdown>
 		</div>
 	);
